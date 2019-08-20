@@ -70,7 +70,7 @@ RSpec.describe Enumerable do
   describe 'my_inject' do
     it 'return the accumulator for each value passed in a block' do
       result = arr.my_inject { |sum, n| sum + n }
-      expect(result).to eql(arr.inject { |sum,n| sum+n })
+      expect(result).to eql(arr.inject { |sum, n| sum + n })
     end
   end
 
