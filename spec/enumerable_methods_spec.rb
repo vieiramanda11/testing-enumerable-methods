@@ -53,5 +53,19 @@ RSpec.describe Enumerable do
       expect(my_any).to eql(any)
     end
   end
+ 
+  describe "#my_none" do
+    it "returns true if none of the elements meet criteria defined in the block" do
+      expect(arr.my_none? { |num| num==10 }).to eql(true)
+    end
+  end
+
+  describe "#my_map" do
+    it "returns a new array with the results of running through the block once on a given array" do
+      answer = arr.my_map { |num| num**2 }
+      expect(answer).to eql([1,4,9,16,25])
+    end
+  end
+
 
 end
