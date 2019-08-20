@@ -24,4 +24,19 @@ RSpec.describe Enumerable do
         expect(my_array).to eql(original_array)
     end
   end
+
+  describe "#my_select" do
+    it "returns an array of given numbers based on a given block" do
+      expect([1,2,3,4,5].my_select(&:even?)).to eql([2,4])
+    end
+  end
+
+  describe "#my_count" do
+    it "returns an array of elements that evaluate to true given a block statement" do
+      arr.my_count {|n| n>4 }
+      expect(arr.my_count).to eql(5)
+    end
+  end
+
+
 end
