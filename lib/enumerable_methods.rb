@@ -45,12 +45,11 @@ module Enumerable
   
     # my_any? method
     def my_any?
-      res = self
-      res.my_each do |a|
-        return true unless yield(a)
+        if block_given?
+          my_each { |i| return true if yield(i) }
+        end
+        false
       end
-      false
-    end
   
     # my_none? method
     def my_none?
@@ -109,7 +108,7 @@ module Enumerable
   end
   
   # tests
-  # arr = [1, 2, 3, 4, 5]
+  #arr = [1, 2, 3, 4, 5]
   
   # arr.my_each { |x| puts x * 2 }
   
@@ -119,7 +118,9 @@ module Enumerable
   
   # arr.my_all? { |i| puts i > 2 } # => false
   
-  # arr.my_any? { |i| puts i < 0 } # => false
+   # arr.my_any? { |i| puts i > 2 }  # => true
+
+   #arr.any? { |i| puts i > 2 }
   
   # puts arr.my_none?{|a| a.nil? } # => true
   

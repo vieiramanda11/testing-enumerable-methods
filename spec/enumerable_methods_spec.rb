@@ -37,6 +37,21 @@ RSpec.describe Enumerable do
       expect(arr.my_count).to eql(5)
     end
   end
+  
+  describe "#my_all?" do
+    it "returns true if the block passed never returns false or nil" do
+      my_all = arr.my_all? { |i| i > 2 }
+      all = arr.all? { |i| i > 2 }
+      expect(my_all).to eql(all)
+    end
+  end
 
+  describe "#my_any?" do
+    it "returns true if the block passed ever returns a value othen than false or nil" do
+      my_any = arr.my_any? { |i| i < 0 }
+      any = arr.any? { |i| i < 0 }
+      expect(my_any).to eql(any)
+    end
+  end
 
 end
