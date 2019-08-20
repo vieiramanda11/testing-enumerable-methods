@@ -63,14 +63,14 @@ RSpec.describe Enumerable do
   describe '#my_map' do
     it 'returns a new array with the results of running through the block once on a given array' do
       answer = arr.my_map { |num| num**2 }
-      expect(answer).to eql([1, 4, 9, 16, 25])
+      expect(answer).to eql(arr.map { |num| num**2 })
     end
   end
 
   describe 'my_inject' do
     it 'return the accumulator for each value passed in a block' do
       result = arr.my_inject { |sum, n| sum + n }
-      expect(result).to eql(15)
+      expect(result).to eql(arr.inject { |sum,n| sum+n })
     end
   end
 
